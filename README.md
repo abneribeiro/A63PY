@@ -5,11 +5,11 @@ This repository contains a collection of simple python projects. Each project is
 ### **Project List**
 The following is a list of the projects included in this repository:
 
-- **Project 1: Classification using Logistic Regression**
+- **Project 1: Stock Manager**
 
   - Description: This project explores classification using Decision Tree Regressor. The goal is to predict whether a bank loan will be approved or not, based on various features of the loan application.
-Technologies used: Python, Scikit-learn
-Folder location: `./project1_europe_bikes`
+Technologies used: Python 
+Folder location: `./stock_manager`
 
 
 ### **License**
