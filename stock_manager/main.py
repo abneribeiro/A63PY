@@ -49,10 +49,10 @@ product5 = Product("Backpack", 39.90, 25)
 
 store.add_product(product1)
 store.add_product(product2)
-store.add_product(product1)
-store.add_product(product2)
-store.add_product(product1)
-store.add_product(product2)
+store.add_product(product3)
+store.add_product(product4)
+store.add_product(product5)
+
 while True:
     store.display_products()
     name = input("Enter product name (or q to quit): ")

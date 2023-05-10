@@ -18,16 +18,26 @@ The program uses a dictionary to store the product information, with the keys be
 
 The main program uses a while loop that repeatedly displays the available products and asks the user for the product name and quantity to sell. If the requested product is not available or the requested quantity is more than the available stock, an appropriate message is displayed. Otherwise, the quantity is subtracted from the stock and a success message is displayed. Finally, the `generate_report` method is called to show the updated sales report.
 
-## Future Improvements
-
-Possible future improvements for this program include adding a graphical user interface (GUI), implementing data persistence using a database, and adding support for multiple store locations.
-
-
 ```python
-class product:
-    def __init__(self, name, price, quantity):
+def __init__(self, name, price, quantity):
         self.name = name
         self.price = price
         self.quantity = quantity
 
 ```
+
+```python
+class Store:
+    def __init__(self):
+        self.products = {}
+
+    def add_product(self, product):
+        self.products[product.name] = product
+```
+
+
+## Future Improvements
+
+Possible future improvements for this program include adding a graphical user interface (GUI), implementing data persistence using a database, and adding support for multiple store locations.
+
+
