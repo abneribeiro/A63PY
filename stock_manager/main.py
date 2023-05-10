@@ -1,48 +1,72 @@
-class product:
+class Product:
     def __init__(self, name, price, quantity):
         self.name = name
         self.price = price
         self.quantity = quantity
 
-class store:
+
+class Store:
     def __init__(self):
-        self.products = []
+        self.products = {}
 
     def add_product(self, product):
-        self.products.append(product)
+        self.products[product.name] = product
 
     def remove_product(self, name):
-        for product in self.products:
-            if product.name == name:
-                self.products.remove(product)
-                break
+        if name in self.products:
+            del self.products[name]
+        else:
+            print(f"{name} is not available in the store.")
 
-    def update_estock(self, name, quantity):
-        for product in self.products:
-            if product.name == name:
-                product.quantity += quantity
-                break
+    def update_stock(self, name, quantity):
+        if name in self.products:
+            self.products[name].quantity += quantity
+        else:
+            print(f"{name} is not available in the store.")
 
     def generate_report(self):
         total_sold = 0
-        for product in self.products:
+        for name, product in self.products.items():
             sold = product.quantity
             total_sold += sold
-            print(f"{product.name}: {sold} unit sold")
+            print(f"{name}: {sold} unit(s) sold")
         print(f"Total Sold: {total_sold}")
 
-
-Store = store()
-product1 = product("Camiseta", 29.90, 50)
-product2 = product("Calça Jeans", 99.90, 20)
-Store.add_product(product1)
-Store.add_product(product2)
-#Store.update_estock("Camiseta", -10)
-#Store.remove_product("Calça Jeans")
-Store.generate_report()
+    def display_products(self):
+        print("Available products:")
+        for name, product in self.products.items():
+            print(f"{name}: {product.quantity} unit(s) in stock")
 
 
-#Adicionar entrada de valores (input)
-#Já ter um conjunto de valores em stock e fazer a verificação se não existem produtos exibir uma mensagem, caso contrário fazer a vendar e subtrair no stock
-#Usar dicionarios com as suas chaves ao invés de listas
-# Fazer um loop que mostra sempre os produtos disponiveis para o usúario depois de cada venda
+store = Store()
+
+# add some products to the store
+product1 = Product("T-shirt", 29.90, 50)
+product2 = Product("Jeans", 99.90, 20)
+product3 = Product("Sneakers", 79.90, 30)
+product4 = Product("Hoodie", 49.90, 40)
+product5 = Product("Backpack", 39.90, 25)
+
+store.add_product(product1)
+store.add_product(product2)
+store.add_product(product1)
+store.add_product(product2)
+store.add_product(product1)
+store.add_product(product2)
+while True:
+    store.display_products()
+    name = input("Enter product name (or q to quit): ")
+    if name == 'q':
+        break
+    elif name not in store.products:
+        print(f"{name} is not available in the store.")
+    else:
+        quantity = int(input("Enter quantity to sell: "))
+        if quantity > store.products[name].quantity:
+            print(
+                f"Only {store.products[name].quantity} unit(s) of {name} is available.")
+        else:
+            store.products[name].quantity -= quantity
+            print(f"{quantity} unit(s) of {name} sold.")
+
+store.generate_report()
