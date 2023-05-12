@@ -11,7 +11,7 @@ class Store:
 
     def add_product(self, product):
         self.products[product.name] = product
-
+           
     def remove_product(self, name):
         if name in self.products:
             del self.products[name]
